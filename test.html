@@ -6,15 +6,52 @@
   </head>
   <body>
 
-	<?php
-  require("simple_html_dom.php");
-  		// 파싱할 주소
-  		$url = "http://movie.naver.com/movie/running/current.nhn#";
-  		// url 소크코드 가져옴 및 돔 생성
-  		$content = file_get_contents($url);
-  		$html = new simple_html_dom();
-  		$html->load($content);
-	?>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <?
+
+  include "./snoopy/Snoopy.class.php";
+  $snoopy=new snoopy;
+
+
+  //for($i=1;$i<=37;$i++) {
+
+  $url = "http://www.alpha.co.kr/customer/chain/chainSearchList.do?cPage=37&searchWord=&searchSmartcon=";
+  $snoopy->fetch($url); //긁을주소
+  $txt = $snoopy -> results;
+
+
+  $rex = $txt;
+
+
+  $tt = "|<td class=\"shop\">(.*?)</td>|";
+  $tt2 = "|<td class=\"subject\">(.*?)</td>|";
+  $tt3 = "|<td class=\"tel\">(.*?)</td>|";
+  $tt4 = "|<td class=\"fax\">(.*?)</td>|";
+
+  preg_match_all($tt,$rex,$content);
+  preg_match_all($tt2,$rex,$content2);
+  preg_match_all($tt3,$rex,$content3);
+  preg_match_all($tt4,$rex,$content4);
+
+
+  ?>
+  <table>
+
+
+  <?
+  for($i=0;$i<count($content[0]);$i++) {
+  ?>
+     <tr>
+     <td><?=$content[0][$i]?></td>
+     <td><?=$content2[0][$i]?></td>
+     <td><?=$content3[0][$i]?></td>
+     <td><?=$content4[0][$i]?></td>
+     </tr>
+  <?
+  }
+  ?>
+  </table>
+
 
   </body>
 </html>
