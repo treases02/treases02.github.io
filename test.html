@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset='utf-8'/>
+    <title>영화 목록</title>
+  </head>
+  <body>
+    
+	<?php
+		require("simple_html_dom.php");
+		// 파싱할 주소
+		$url = "http://movie.naver.com/movie/running/current.nhn#";
+		// url 소크코드 가져옴 및 돔 생성
+		$content = file_get_contents($url);
+		$html = new simple_html_dom();
+		$html->load($content);
+		
+		// 사영중인 영화 목록 리스트
+		$movieList = $html->find('#content .lst_detail_t1 li');
+		
+		// 예매율 순위 표시용 
+		$count = 1;
+		// 반복문 돌면서 타이틀 내용만 가져옴
+		foreach($movieList as $item)
+		{	
+			// find해서 가져올때 배열로 반환함
+			// plaintext 텍스트로 가져옴
+			$movieName = $item->find('.lst_dsc .tit a',0)->plaintext;
+			echo "예매율".$count."위 : ".$movieName."<br>";
+			$count++;
+		}
+	?>
+	
+  </body>
+</html>
