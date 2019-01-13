@@ -23,12 +23,12 @@ plugins:
   - jekyll-toc
 
 # Social
-title: Bootstrap Material Design
-description: The most popular HTML, CSS, and JS Material Design library in the world.
-twitter: FezVrasta
-authors: Federico Zivolo and Bootstrap contributors
-social_logo_path: /assets/brand/bootstrap-social-logo.png
-social_image_path: /assets/brand/bootstrap-social.png
+title: 홍주고등학교 어플리케이션
+description: 홍주고등학교 어플리케이션 다운로드 홈페이지 입니다.
+//twitter: FezVrasta
+//authors: Federico Zivolo and Bootstrap contributors
+//social_logo_path: /assets/brand/bootstrap-social-logo.png
+//social_image_path: /assets/brand/bootstrap-social.png
 
 # Custom vars
 current_version:  4.1.0
