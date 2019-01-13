@@ -12,11 +12,8 @@
   include "./snoopy/Snoopy.class.php";
   $snoopy=new snoopy;
 
-
-  //for($i=1;$i<=37;$i++) {
-
   $url = "http://www.alpha.co.kr/customer/chain/chainSearchList.do?cPage=37&searchWord=&searchSmartcon=";
-  $snoopy->fetch($url); //긁을주소
+  $snoopy->fetch($url);
   $txt = $snoopy -> results;
 
 
